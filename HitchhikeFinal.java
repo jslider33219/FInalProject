@@ -15,16 +15,18 @@ public class HitchhikeFinal {
 
             try {
                 
-                HashMap<String, Integer> inventory = new HashMap<>();
-                //inventory system setup
-                    int water = inventory.add("Water Bottle", 2);
-                    int snacks = inventory.add("Snacks", 3);
-                    int baseballBat = inventory.add("Baseball Bat", 0);
+                HashMap<String, Integer> inventory = new HashMap<>(10);
+
+                // Inventory system setup
+            inventory.put("Water Bottle", 2);
+            inventory.put("Snacks", 3);
+            inventory.put("Baseball Bat", 0);
+
 
                 // Main loop
                 while (hitchSanity > 0 && userSanity > 0 && distanceTraveled < 500) {
                      // Intro text
-                System.out.println("Your name is Andrew. Age twenty-five. You just ended with your long-term girlfriend.");
+                System.out.println("\nYour name is Andrew. Age twenty-five. You just ended with your long-term girlfriend.");
                 System.out.println("You found a job in your field with opportunity for growth and good salary.");
                 System.out.println("You're setting out to relocate for the position.");
                 System.out.println("Your life in New York is ending, and the trip to California starts now.\n");
@@ -39,11 +41,13 @@ public class HitchhikeFinal {
 
                     if (response.equals("yes")) {
                         System.out.println("\nYou pull over to allow him to enter.");
-                        System.out.println("He gets in and thanks you profusely.");
+                        System.out.println("He gets in next to you, tosses his suitcase in the back and thanks you profusely.");
                         System.out.println("\"Where are you headed stranger?\"");
                         String destination = scanner.nextLine();
                         System.out.println("\n\"Ah, " + destination + ", California? What are the odds? I've got business there myself.");
                         System.out.println("Looks like we'll be travel buddies, then!\"");
+                        System.out.println("With a stranger riding shotgun you cross into New Jersey.");
+                        distanceTraveled += 20;
                         
                     } else {
                         System.out.println("\nYou drive past him. The drive to California is long and lonely.");
