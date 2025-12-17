@@ -624,6 +624,42 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                             System.out.println("Despite the cheap mattress you get a good night's rest, feeling more prepared for the journey ahead.");
                             hitchSanity += 20;
                             userSanity += 20;
+                             if (userHunger > 100) {
+                        userHunger = 100;
+                    }
+                    if (userHunger < 0) {
+                        userHunger = 0;
+                    }
+                    if (userThirst > 100) {
+                        userThirst = 100;
+                    }
+                    if (userThirst < 0) {
+                        userThirst = 0;
+                    }
+                    if (userSanity > 100) {
+                        userSanity = 100;
+                    }
+                    if (userSanity < 0) {
+                        userSanity = 0;
+                    }
+                    System.out.println("\nDay " + dayCount + " Summary -\nHunger: " + userHunger + "/100, Thirst: " + userThirst + "/100, Distance Traveled: " + distanceTraveled + "/2,800 miles.");
+                   
+                             dayEndDisplay(inventory);
+                        int[] stats3 = useItems(scanner, inventory, userThirst, userHunger, userSanity, distanceTraveled);
+                        userThirst = stats3[0];
+                        userHunger = stats3[1];
+                        userSanity = stats3[2];
+                        distanceTraveled = stats3[3];
+                        dayCount += 1;
+
+                        if (userHunger <= 20) {
+                            System.out.println("Your empty stomach seems to claw at your insides.");
+                            userSanity -= 14;
+                        }
+                         if (userThirst <= 20) {
+                            System.out.println("Your dry mouth makes it hard to focus.");
+                            userSanity -= 14;
+                        }
                             System.out.println("The two of you reconvene in the car the next morning, finally nearing the end of your trip.");
                             if (wichita){
                                 System.out.println("Moab, Utah is blanketed in early morning light as you set off.");
@@ -632,6 +668,42 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                             }
                         } else {
                             System.out.println("\nYou decide to push through the night, determined to make as much progress as possible.");
+                             if (userHunger > 100) {
+                        userHunger = 100;
+                    }
+                    if (userHunger < 0) {
+                        userHunger = 0;
+                    }
+                    if (userThirst > 100) {
+                        userThirst = 100;
+                    }
+                    if (userThirst < 0) {
+                        userThirst = 0;
+                    }
+                    if (userSanity > 100) {
+                        userSanity = 100;
+                    }
+                    if (userSanity < 0) {
+                        userSanity = 0;
+                    }
+                    System.out.println("\nDay " + dayCount + " Summary -\nHunger: " + userHunger + "/100, Thirst: " + userThirst + "/100, Distance Traveled: " + distanceTraveled + "/2,800 miles.");
+                   
+                             dayEndDisplay(inventory);
+                        int[] stats3 = useItems(scanner, inventory, userThirst, userHunger, userSanity, distanceTraveled);
+                        userThirst = stats3[0];
+                        userHunger = stats3[1];
+                        userSanity = stats3[2];
+                        distanceTraveled = stats3[3];
+                        dayCount += 1;
+
+                        if (userHunger <= 20) {
+                            System.out.println("Your empty stomach seems to claw at your insides.");
+                            userSanity -= 14;
+                        }
+                         if (userThirst <= 20) {
+                            System.out.println("Your dry mouth makes it hard to focus.");
+                            userSanity -= 14;
+                        }
                             System.out.println("Exhaustion pulls insistently at your mind.");
                             System.out.println("John garbles a few sentences in his sleep.");
                             System.out.println("You don't like the words you think you hear.");
@@ -650,14 +722,90 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                             System.out.println("\"Nearly there now, eh? Just a bit further to Reno.\"");
                         }
                         System.out.println("\"Only about " + (2800 - distanceTraveled) + " miles to go!\"");
+                        System.out.println("Address his mistake? (yes/no)");
+                        String addressResponse = scanner.nextLine().trim().toLowerCase();
+                        if (addressResponse.equals("yes")) {
+                            if (destination.equals("Reno")) {
+                            System.out.println("\nYou point out that you're headed to " + destination + ", not Los Angeles.");}
+                            else {
+                                System.out.println("\nYou point out that you're headed to " + destination + ", not Reno.");
+                            }
+                            System.out.println("You become suddenly aware of the sound of John's breathing.");
+                            hitchSanity -= 20;
+                            System.out.println("\"What? What are you talking about?\" he says, voice tight. \"Of course we're going to " + destination + ". Why would I say otherwise?\"");
+                            System.out.println("\"I'm not a liar, Andy. Don't make me out to be one.\"");
+                            hitchFriendship -= 15;
+                            userSanity -= 10;
+                            System.out.println("Something in his tone makes the decision for you; the conversation is not going to continue.");
+                        } else {
+                            System.out.println("\nYou let it slide.");
+                            System.out.println("John smiles as his eyes track the scenery.");
+                            hitchFriendship += 10;
+                            hitchSanity += 10;
+                            userSanity -=10;
+                        }
 
+                        System.out.println("\nYou turn over your interactions so far in your mind.");
+                        System.out.println("What is it, really, that is unsettling you about John?");
+                        System.out.println("Is it his erratic behavior, strange responses, or something else entirely?");
+                        System.out.println("Pick a reason that bothers you most. (behavior / responses / else)");
+                        String reasonResponse = scanner.nextLine().trim().toLowerCase();
+                        switch (reasonResponse) {
+                            case "behavior":
+                                System.out.println("\nYou reflect on John's erratic behavior, the way he seems to shift moods unpredictably.");
+                                System.out.println("One moment he's friendly and open, the next he's distant and guarded.");
+                                System.out.println("You resolve to leave the matter alone, the end of your trip coming soon.");
+                                userSanity -= 5;
+                                break;
+                            case "responses":
+                                System.out.println("\nYou think about John's strange responses to your questions, the inconsistencies in his story.");
+                                System.out.println("It all feels like a puzzle with missing pieces. You wonder what else John might be hiding. And why...");
+                                hitchFriendship -= 10;
+                                userSanity -= 15;
+                                break;
+                            case "else":
+                                System.out.println("\nYou can't quite put your finger on it, but there's something about John that just doesn't sit right with you.");
+                                System.out.println("You ultimately convince yourself it's just the natural nervousness of traveling with a stranger.");
+                                
+                                userSanity += 15;
+                                break;
+                            default:
+                                System.out.println("\nInvalid response. You continue driving, the unease lingering.");
+                                userSanity -= 5;
+                        }
 
+                        boolean johnHere = true;
+                        distanceTraveled += 20000;
+
+ if (userHunger > 100) {
+                        userHunger = 100;
+                    }
+                    if (userHunger < 0) {
+                        userHunger = 0;
+                    }
+                    if (userThirst > 100) {
+                        userThirst = 100;
+                    }
+                    if (userThirst < 0) {
+                        userThirst = 0;
+                    }
+                    if (userSanity > 100) {
+                        userSanity = 100;
+                    }
+                    if (userSanity < 0) {
+                        userSanity = 0;
+                    }
+                    if (distanceTraveled >= 2800) {
+                        distanceTraveled = 2801;
+                    }
+                    System.out.println("\nDay " + dayCount + " Summary -\nHunger: " + userHunger + "/100, Thirst: " + userThirst + "/100, Distance Traveled: " + distanceTraveled + "/2,800 miles.");
+                   
                         dayEndDisplay(inventory);
-                        int[] stats3 = useItems(scanner, inventory, userThirst, userHunger, userSanity, distanceTraveled);
-                        userThirst = stats3[0];
-                        userHunger = stats3[1];
-                        userSanity = stats3[2];
-                        distanceTraveled = stats3[3];
+                        int[] stats4 = useItems(scanner, inventory, userThirst, userHunger, userSanity, distanceTraveled);
+                        userThirst = stats4[0];
+                        userHunger = stats4[1];
+                        userSanity = stats4[2];
+                        distanceTraveled = stats4[3];
                         dayCount += 1;
 
                         if (userHunger <= 20) {
@@ -734,11 +882,19 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                         }
                     }
 
-                    if (distanceTraveled >= 2800) {
+                    if (distanceTraveled >= 2800 && !johnHere) {
                         //you made it!
                         System.out.println("Looks like your journey has come to an end.");
                         System.out.println("You've reached California! Congratulations! Get ready to start your new life.");
                         System.out.println("ENDING SEVEN: New Beginnings.");
+                        break;
+                    }
+                    if (distanceTraveled >= 2800 && johnHere) {
+                        //you made it with john
+                        System.out.println("John turns to you, dark eyes shining with gratitude.");
+                        System.out.println("\"Thank you, Andy. I couldn't have made it without you. You're a real lifesaver, kid.\"");
+                        System.out.println("He opens the door, grabs his ratty suitcase, and steps out into the setting California sun.");
+                        System.out.println("ENDING EIGHT: Reliable Companion.");
                         break;
                     }
                 } // end main gameplay loop
