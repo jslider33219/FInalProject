@@ -94,8 +94,8 @@ public class HitchhikeFinal {
                         System.out.println("He gets in next to you, tosses his suitcase in the back and thanks you profusely.");
                         System.out.println("\"Where are you headed stranger?\"");
                         String destination = scanner.nextLine();
-                        System.out.println("\n\"Ah, " + destination + ", California? What are the odds? I've got business there myself.");
-                        System.out.println("Looks like we'll be travel buddies, then!\"");
+                        System.out.println("\n\"Ah, " + destination + ", California? What are the odds? I've got business there myself.\n");
+                        System.out.println("\nLooks like we'll be travel buddies, then!\"");
                         System.out.println("With a stranger riding shotgun you cross into New Jersey.");
                         distanceTraveled += 20;
 
@@ -109,7 +109,7 @@ public class HitchhikeFinal {
                             String input = scanner.nextLine().trim().toLowerCase();
                             if (input.equals("yes")) {
                                 System.out.println("You decide to strike up a conversation. You share basic things, like your name and reason for traveling.");
-                                System.out.println("\"My name is John,\" says the passenger. \"I'm actually going west for a job, too.\" \n \"It's hard to leave my life in New York behind, but they say change is healthy.\"");
+                                System.out.println("\"My name is John,\" says the passenger. \"I'm actually going west for a job, too.\" \n\"It's hard to leave my life in New York behind, but they say change is healthy.\"");
                                 userSanity -= 5;
                                 userThirst -= 10;
                                 hitchSanity += 10;
@@ -128,110 +128,14 @@ public class HitchhikeFinal {
                         distanceTraveled += 510;
                         System.out.println("A odd feeling creeps up in the back of your mind. You don't question it, almost feels important.");
                         userHunger -= 10;
-                        System.out.println("\n Day " + dayCount + "-\n Hunger: " + userHunger + "/100, Thirst: " + userThirst + "/100, Distance Traveled: " + distanceTraveled + "/2,800 miles.");
-                        //I want to only display items that we have a quantity of
-                        System.out.print("Inventory: { ");
-                        for (String item : inventory.keySet()) {
-                            int qty = inventory.get(item);
-                            if (qty > 0) {
-                                System.out.print(item + ": " + qty + " ");
-                            }
-                        }
-                        System.out.println("}");
-                        System.out.println("Use inventory item? (type item name or 'no')");
-                        String itemUse = scanner.nextLine().trim();
-                        if (inventory.containsKey(itemUse) && inventory.get(itemUse) > 0) {
-                            switch (itemUse) {
-                                case "Water Bottle":
-                                    userThirst += 30;
-                                    if (userThirst > 100) {
-                                        userThirst = 100;
-                                    }
-                                    inventory.put("Water Bottle", inventory.get("Water Bottle") - 1);
-                                    System.out.println("You drink a bottle of water. Thirst increased to " + userThirst + "/100.");
-                                    break;
-                                case "Snacks":
-                                    userHunger += 20;
-                                    if (userHunger > 100) {
-                                        userHunger = 100;
-                                    }
-                                    inventory.put("Snacks", inventory.get("Snacks") - 1);
-                                    System.out.println("You eat some snacks. Hunger increased to " + userHunger + "/100.");
-                                    break;
-                                case "Sandwiches":
-                                    userHunger += 35;
-                                    if (userHunger > 100) {
-                                        userHunger = 100;
-                                    }
-                                    inventory.put("Sandwiches", inventory.get("Sandwiches") - 1);
-                                    System.out.println("You eat a sandwich. Hunger increased to " + userHunger + "/100.");
-                                    break;
-                                case "Map":
-                                    System.out.println("You check the map. It shows you're on the right path to California. About " + (2800 - distanceTraveled) + " miles to go.");
-                                    break;
-                                case "First Aid Kit":
-                                    userSanity += 20;
-                                    if (userSanity > 100) {
-                                        userSanity = 100;
-                                    }
-                                    inventory.put("First Aid Kit", inventory.get("First Aid Kit") - 1);
-                                    System.out.println("You check the first aid kit. Knowing it's there brings you comfort. Sanity increased to " + userSanity + "/100.");
-                                    break;
-                                default:
-                                    System.out.println("Item not available.");
-                            }
-                        } else if (itemUse.equalsIgnoreCase("no")) {
-                            System.out.println("You chose not to use any items.");
-                        } else {
-                            System.out.println("Invalid item or out of stock.");
-                            System.out.println("Try another item? (type item name or 'no')");
-                            String secondItemUse = scanner.nextLine().trim();
-                            if (inventory.containsKey(secondItemUse) && inventory.get(secondItemUse) > 0) {
-                                switch (secondItemUse) {
-                                    case "Water Bottle":
-                                        userThirst += 30;
-                                        if (userThirst > 100) {
-                                            userThirst = 100;
-                                        }
-                                        inventory.put("Water Bottle", inventory.get("Water Bottle") - 1);
-                                        System.out.println("You drink a bottle of water. Thirst increased to " + userThirst + "/100.");
-                                        break;
-                                    case "Snacks":
-                                        userHunger += 20;
-                                        if (userHunger > 100) {
-                                            userHunger = 100;
-                                        }
-                                        inventory.put("Snacks", inventory.get("Snacks") - 1);
-                                        System.out.println("You eat some snacks. Hunger increased to " + userHunger + "/100.");
-                                        break;
-                                    case "Sandwiches":
-                                        userHunger += 35;
-                                        if (userHunger > 100) {
-                                            userHunger = 100;
-                                        }
-                                        inventory.put("Sandwiches", inventory.get("Sandwiches") - 1);
-                                        System.out.println("You eat a sandwich. Hunger increased to " + userHunger + "/100.");
-                                        break;
-                                    case "Map":
-                                        System.out.println("You check the map. It shows you're on the right path to California. About " + (2800 - distanceTraveled) + " miles to go.");
-                                        break;
-                                    case "First Aid Kit":
-                                        userSanity += 20;
-                                        if (userSanity > 100) {
-                                            userSanity = 100;
-                                        }
-                                        inventory.put("First Aid Kit", inventory.get("First Aid Kit") - 1);
-                                        System.out.println("You check the first aid kit. Knowing it's there brings you comfort. Sanity increased to " + userSanity + "/100.");
-                                        break;
-                                    default:
-                                        System.out.println("Item not available.");
-                                }
-                            } else if (secondItemUse.equalsIgnoreCase("no")) {
-                                System.out.println("You chose not to use any items.");
-                            } else {
-                                System.out.println("Invalid item or out of stock. Try again tomorrow.");
-                            }
-                        }
+                        System.out.println("\nDay " + dayCount + " Summary -\nHunger: " + userHunger + "/100, Thirst: " + userThirst + "/100, Distance Traveled: " + distanceTraveled + "/2,800 miles.");
+                   
+                        dayEndDisplay(inventory);
+                        int[] stats = useItems(scanner, inventory, userThirst, userHunger, userSanity, distanceTraveled);
+                        userThirst = stats[0];
+                        userHunger = stats[1];
+                        userSanity = stats[2];
+                        distanceTraveled = stats[3];
                         dayCount += 1;
                         // LEVEL 1 END
 
@@ -260,7 +164,7 @@ public class HitchhikeFinal {
                             } else if (input2.equals("no")) {
                                 System.out.println("\nYou decide not to bring it up, focusing instead on the journey ahead.");
                                 System.out.println("The silence between you feels a bit heavier, but you push the thought aside.");
-                                hitchSanity -= 5;
+                                hitchSanity += 15;
                                 hitchFriendship += 5;
                                 break;
                             } else {
@@ -304,6 +208,53 @@ public class HitchhikeFinal {
                                 System.out.println("He glances at you, a vague smile crossing his face. \"Sure, a break sounds good.\"");
                                 System.out.println("He recommends a small roadside diner, and the smell of frying food wafting through the air makes your empty stomach growl loudly as you pull in.");
                                 System.out.println("A waitress appearing to be about your age approaches your booth.");
+                                System.out.println("+++++################################++++++---------....--................ ...                ...----+++++---+++-----\r\n" + //
+                                                                        "+++++++++++####################+++++.    .-----...-...... ........     .. ......----+++++++++++++++++++++++----------\r\n" + //
+                                                                        "---++++----++++++##++++++++++++++.          ......             .----++++#++++++++++++++++++-----+++++++++++---------.\r\n" + //
+                                                                        "....--------....--.......-......              .. ..---+++-++++++++++++++++++++++++--+---------..-...--....      .----\r\n" + //
+                                                                        "                                       -+###. +++++++++++-++++++++++++++++++++-.                  -++++++++--++++++--\r\n" + //
+                                                                        "                        ...---.      -++#####.+++++++----.----+++++++++++++++++-.   .             -++++++++++++++++  \r\n" + //
+                                                                        "              ......----------.     +--+#####+---.          .-+++++++++++++++++-                  -+++++++++++++++.  \r\n" + //
+                                                                        "    . ...............--------.  ...-++ -++##+-- ..          -++++++++++++++++++-                  -+++++++++-+++++   \r\n" + //
+                                                                        "  ..+..........                   --+########++           +--++++++++++++++++++-     .            -+++++++++-+++#+   \r\n" + //
+                                                                        "   ............           ..      -+++++-####++            .-++++++++++++++++++-                  -+++++++++-++++-   \r\n" + //
+                                                                        "   .............          .        .++--++##+++            .-++++++++++++++++++-                 .+++++##+++-++++-   \r\n" + //
+                                                                        "  ..............                 .- .-####+++++             -++++++++++++++++++-           .     -####-             .\r\n" + //
+                                                                        ".  .............                ...#++++ -+++++             .-++++++  +++++++++-    .   ..-+  ---#####+   .......####\r\n" + //
+                                                                        "   .............          .--    ..-##-  .. .++. ..         ..-++++.  .++++++++-    ... -.-+  +++#####-  ........  ##\r\n" + //
+                                                                        "    ..........+-      .###+--      -#+ .     #-++#-         ..--++.    .#++++++-    ..- +-+#..########++.------... ##\r\n" + //
+                                                                        " -  ..........+-      ####+--.   -.  .  .++   -+++#.        ..--+++++++++++++++-    +++-+.-#..########-#---------. -#\r\n" + //
+                                                                        "     ...........     -++--- .    ..--  .+++.   #++##        ...-+++++++++++++++- #--##+          .###################\r\n" + //
+                                                                        "      .........      .--..      .-+---.-+++++  -+++###########+++++++++++++++++- #-+##.            -#################\r\n" + //
+                                                                        "       ........   .. ..-..           -++++#.--   --##..     .-+++++------++++++- #++#+-+#####-      -################\r\n" + //
+                                                                        "    ............  -......            -. --. -- -+ .#+-.     .-+++++ .... -+++++- #+++++#######.    ..################\r\n" + //
+                                                                        "    .      .....  --....            .. -+------   -+#++- +--+#+#+++ .... -+++++- #--..   ######++-...################\r\n" + //
+                                                                        "   .-      .....  --.....          ..---.+-.-+    .-#+#+.-+ ##+#+++ .... .+++++- #+++#. .+########-.+################\r\n" + //
+                                                                        "    ..     .---.  --....     .. .--..-. +-  +###     -.     -+#++++ -... .+++++. #+###++###########-#################\r\n" + //
+                                                                        "   ...     ----.  --.    -+++++--.  ++-.   .#+##+++#++-     --+++++ .    -+++++. #.   ..##########+##################\r\n" + //
+                                                                        "   ........-----  --. .. -++-++.   ++++---  -+ ----##+.     -++++++++++++++++++- #-  - ..----####+###################\r\n" + //
+                                                                        "   ........-----  --  ..  -----.                  .##--     .-++++++++++####+++. #- .#+      ########################\r\n" + //
+                                                                        "   .........----  ---.     +. .                #  -#  -     .-++++++++++######+. +          #########################\r\n" + //
+                                                                        "  .........----- .+-+-####                     ####.  + .   .-+++++++++#######+. +--.    -+##########################\r\n" + //
+                                                                        "  ..........----  .-+-####                     -###.  - .   .-++++++++########+. ..   - .++++###+++++################\r\n" + //
+                                                                        "   ..-......----. .-+-###+                      ##++  . .   .-- +++++++########.     .#-  +#+##+++++++###############\r\n" + //
+                                                                        "## .-#-...------...-+.###.                      ##+#  .     -.. - .++++######+#  .    .-++##-#++--+-+################\r\n" + //
+                                                                        "##+++#######+  -#+.+-.###                        #+#    .   -   -   ++++######- ......+######+---+-+++###############\r\n" + //
+                                                                        "++   -##-..    -#-.-- +##                        #+-        .       .---+++##- ...... +#####+-------.+############.  \r\n" + //
+                                                                        "    +###--     +#- -- +##                         .-  - .-+-  -+######+###++#.  .+-+#-######-------+###########-+-+--\r\n" + //
+                                                                        "   +####+      ##+.++.+#+                         +#  #              .........  .+-#++#####- .--- +##########+-++++-+\r\n" + //
+                                                                        "   .+##.       +#-.++.+#                           -  +             ..... .-..  .... ####++  .. .+###########.--+---+\r\n" + //
+                                                                        "   .+#.      .-+...+--+#                              -                . .-..   ....+#+##+  ...#---#########+-+######\r\n" + //
+                                                                        "       ....#+-++..--.-+#                                                .-...    ...####+#+++++######################\r\n" + //
+                                                                        "##   #.- .##+++#-.+#. +#                                   ...-+++++##++--######+++++++####++-+######################\r\n" + //
+                                                                        "##   +#   ##-  +#  +-. -                                   .--..-  -+###+-+++#-++++++++-++++++++########+#+##########\r\n" + //
+                                                                        "##   ##-  ##-   ##                                    .#+++++++++++##      -.    .-++--------++++######+ ++##########\r\n" + //
+                                                                        "##  #  #.-#+#...-+  ..-.                        -.                             .+######################  #+##########\r\n" + //
+                                                                        "+++++#+-       --++++++++++--....  -+-.            .                           +++++++++.    .-+++++++. .-.++++++++++\r\n" + //
+                                                                        "                                                                                                                     \r\n" + //
+                                                                        "      - - .-                                                                                                         \r\n" + //
+                                                                        "                                                                                                                     \r\n" + //
+                                                                        "                                                                                                                     ");
                                 System.out.println("\"What can I get for you folks today?\" she asks with a polite grin.");
                                 System.out.println("Her eyes flicker to John, lingering just a moment longer than necessary.");
                                 System.out.println("Order something? (yes/no)");
@@ -357,9 +308,84 @@ public class HitchhikeFinal {
                                     hitchFriendship += 35;
                                     hitchSanity += 20;
                                     userSanity += 10;
+
                                 } else if (respondResponse.equals("question him")) {
                                     System.out.println("You point out that he had initially claimed to be heading west for a job, not to see a daughter.");
                                     System.out.println("John's face tightens, his eyes go dark in a way you haven't seen before.");
+                                    System.out.println(
+                                            "                                                                                          \r\n" +
+                                            "                                                                                          \r\n" +
+                                            "   .                                          ....++###-     +-#########################  \r\n" +
+                                            "  ..                                           .+++###+#.      +########################  \r\n" +
+                                            "  ####                              .-....     -+#######+     # ########################  \r\n" +
+                                            "  --+++--.....--++##++#####- .  -#########################  \r\n" +
+                                            "  --+++--.....--++##++#####- .  -#########################  \r\n" +
+                                            "                             .-+++++---.....-+++++++#+######..+#########################  \r\n" +
+                                            "  . -  ... -. .---....-..-++++#++++++-.... ----++++##+######-++#########################  \r\n" +
+                                            "  +++-+++++++.+++++##############++++---..--.----+#+++######++##########################  \r\n" +
+                                            "  ###++++++++++######################+++++---..---+-.-########+#########################  \r\n" +
+                                            "  ######++++##########################++++++---..---.-##################################  \r\n" +
+                                            "  ######################################++++-----.-.-+##################################  \r\n" +
+                                            "  ####################################++++-.----.--.--+#################################  \r\n" +
+                                            "  ####################################+++-..------..--+############################  ###  \r\n" +
+                                            "  #################################+++++++-...---...--+############################   ##  \r\n" +
+                                            "  #################################+++++++----....----+############################-  ##  \r\n" +
+                                            "  ################################+++++++------.-..---+#############################  ##  \r\n" +
+                                            "  ##############################++++++++-------------++#############################+.##  \r\n" +
+                                            "  #############################++++++++++-+++---------++#############################.##  \r\n" +
+                                            "  ########################+#++##++++++++++++++-------+++########################-+######  \r\n" +
+                                            "  ########################+#++##++++++++++++++---.---+++######################## +.-####  \r\n" +
+                                            "  ########################++#+###+++++++++++++---+----+###########################+ ####  \r\n" +
+                                            "  ########################++#.+####+++++++-.     .-+- .+########################### ####  \r\n" +
+                                            "  ######################++#++. #+###+++-               .################################  \r\n" +
+                                            "  ########+++###########+.++++ ----                   -#################################  \r\n" +
+                                            "  #####-. .   .+++++.  .   ---  .                    .-+######++########################  \r\n" +
+                                            "  #####+..                 ---.                        .+++##+++########################  \r\n" +
+                                            "  ########+--              -++-.                     .-+++###+++################-+######  \r\n" +
+                                            "  ##########+.              +#++-                 ....---+#++++#########################  \r\n" +
+                                            "  ########+.               -+##+-                 .......-++ .-+########################  \r\n" +
+                                            "  ###########+.           .-+#++.            .     .---++++++++#########################  \r\n" +
+                                            "  #############+-.      ---++++-.   .         .--..-++++#+++++##########################  \r\n" +
+                                            "  #################++++##+++##++-. --. .-.   --++++#+#+-----+###########################  \r\n" +
+                                            "  ##############+++++++++++++##+-....--++        -++++++-++++###########################  \r\n" +
+                                            "  ##################++++#++##+---..   ##+            ..  ...+###########################  \r\n" +
+                                            "  #####################+-+++##++--....+##.  -+            ...+##########################  \r\n" +
+                                            "  ##################+-      ##++++-.  -######.               .-#########################  \r\n" +
+                                            "  ################+-.     .+#######+- .+##+                    +########################  \r\n" +
+                                            "  ##############+-.      +######++++. .-#.                      +################.######  \r\n" +
+                                            "  #############+-.      -++######--.   -                         +############### ######  \r\n" +
+                                            "  ############++-.     .+--+--+-##-                              -##############  +#####  \r\n" +
+                                            "  ############+-.      -+##+##+.                                 .+############-   #####  \r\n" +
+                                            "  ############+--.    .+#######+                                 .+###########+    #####  \r\n" +
+                                            "  ############++-.    -++######+.                                .++##########     #####  \r\n" +
+                                            "  ############++--   .--.+##+++-                                 .-+########+      #####  \r\n" +
+                                            "  ############+++-....--.                                     .. .-+#######        #####  \r\n" +
+                                            "  ############+++---..                                            .-######         #####  \r\n" +
+                                            "  #############++++--                                            .-++####         ######  \r\n" +
+                                            "  ###############+#+     .-+##.-.       .-..                      -+++#+          ####.#  \r\n" +
+                                            "  ##############+++-     -+++#+--                                .---+-          #####..  \r\n" +
+                                            "  ###############++-  .---+###+..                                -+++.          ########  \r\n" +
+                                            "  ################++--++++-+#+#++--..--...-.                    .-++            ########  \r\n" +
+                                            "  ##################++++++++++##+++++-------...                .-++            #########  \r\n" +
+                                            "  #####################++++++++#+######+##+----.         -----..-+             #########  \r\n" +
+                                            "  ############################+-+####+++++--.          .--++..-++             ##########  \r\n" +
+                                            "  ####################-...+####++++++++--.             -++-. --.              ##########  \r\n" +
+                                            "  #####################-.    -##+++++++----.           .                     ###########  \r\n" +
+                                            "  #######################      -++++++-.---.                                 ###########  \r\n" +
+                                            "  ########################       .+++++-.                                    ###########  \r\n" +
+                                            "  ########################+          .-.                                     ###########  \r\n" +
+                                            "  #########################-                                                 ###########  \r\n" +
+                                            "  ##########################.                       .-                       ###########  \r\n" +
+                                            "  ###########################-.-                 .-.                         ###########  \r\n" +
+                                            "  ###########################+#                                             +##########  \r\n" +
+                                            "  ###############################             .                               ##########  \r\n" +
+                                            "  ################################                                             #########  \r\n" +
+                                            "  ################################.                                            -########  \r\n" +
+                                            "  #################################                                             ########  \r\n" +
+                                            "  ##################################                                            .#######  \r\n" +
+                                            "  ###################################                                            #######  \r\n" +
+                                            "  ####################################.                                          #######  \r\n"
+                                    );
                                     System.out.println("\"I'm sorry I was a bit guarded before. I thought we knew each other well enough now to be honest.\"");
                                     System.out.println("\" *Clearly* I was wrong.\"");
                                     hitchFriendship -= 20;
@@ -372,6 +398,7 @@ public class HitchhikeFinal {
                                     userSanity -= 5;
                                 }
                                 break;
+
                             case "take a drink":
                                 if (inventory.get("Water Bottle") > 0) {
                                     System.out.println("\nYou take a refreshing drink from your water bottle.");
@@ -408,6 +435,44 @@ public class HitchhikeFinal {
                                 hitchSanity -= 5;
                                 userSanity +=5;
                         }
+                        distanceTraveled +=220;
+                        System.out.println("\nYou pass into Springfield, Illinois as evening approaches.");
+                        System.out.println("Stop for the night, or drive through it? (stop/drive)");
+                        String nightResponse = scanner.nextLine().trim().toLowerCase();
+                        if (nightResponse.equals("stop")) {
+                            System.out.println("\nYou find a cheap motel and decide to stop for the night.");
+                            System.out.println("John seems, as best you can tell, relieved to get out of the car for a while.");
+                            System.out.println("Despite the cheap mattress you get a good night's rest, feeling more prepared for the journey ahead.");
+                            hitchSanity += 20;
+                            userSanity += 20;
+                            boolean wichita = false;
+                        } else {
+                            System.out.println("\nYou decide to push through the night, determined to make as much progress as possible.");
+                            System.out.println("The darkness and monotony of the road weigh heavily on you.");
+                            System.out.println("The grating rhythm of John's ocassional mumbling only makes it worse.");
+                            System.out.println("By the time his rambling turns to snores you notice your eye is twitching.");
+                            hitchSanity -= 5;
+                            userSanity -= 15;
+                            distanceTraveled += 500;
+                            boolean wichita = true;
+                        }
+                        System.out.println("\nDay " + dayCount + " Summary -\nHunger: " + userHunger + "/100, Thirst: " + userThirst + "/100, Distance Traveled: " + distanceTraveled + "/2,800 miles.");
+                        
+                        dayEndDisplay(inventory);
+                        int[] stats2 = useItems(scanner, inventory, userThirst, userHunger, userSanity, distanceTraveled);
+                        userThirst = stats2[0];
+                        userHunger = stats2[1];
+                        userSanity = stats2[2];
+                        distanceTraveled = stats2[3];
+                        dayCount += 1;
+
+                        if (wichita) {
+                            System.out.println("\nAs you approach Wichita, Kansas, the first light of dawn begins to break over the horizon.");
+                        } else {
+                            System.out.println("\nYou greet the day in Springfield, Illinois, feeling refreshed.");
+                            System.out.println("The sun is shining brightly as you get back on the road towards Kansas.");
+                        }
+                        
 
                     } else {
                         System.out.println("\nYou drive past him. The drive to California is long and lonely.");
@@ -416,7 +481,8 @@ public class HitchhikeFinal {
                         break;
                     }
 
-                    if (hitchSanity <= 0 && hitchFriendship < 40) {
+                    if (hitchSanity > 0 && hitchFriendship >= 40) {
+                        // His guilt overcomes him
                         System.out.println("\nJohn hesitates, then his face twists grotesquely.");
                         System.out.println("\"I can't do this anymore,\" he hisses.");
                         System.out.println("He begins to cry.");
@@ -425,8 +491,59 @@ public class HitchhikeFinal {
                         System.out.println("ENDING TWO: Mercy of the Spider.");
                         break;
                     }
+                    if (hitchSanity <= 0 && hitchFriendship < 40) {
+                        //he totally snaps
+                        System.out.println("\nJohn's eyes glaze over, and he suddenly lunges at you.");
+                        System.out.println("He's reached some unseen limit, and he can't be controlled anymore.");
+                        if (inventory.getOrDefault("Baseball Bat", 0) > 0) {
+                            //you defend yourself
+                            System.out.println("You fumble around for the baseball bat you picked up earlier.");
+                            System.out.println("His hands begin to close around your throat, and you wind your arm back as much as you can.");
+                            System.out.println("Adrenaline pushing your strength to its limits, you swing the bat and connect solidly with his head.");
+                            System.out.println("A wet thud echoes through your ears as John tumbles down, lax face hitting the dirt.");
+                            System.out.println("You gasp for breath, heart pounding, unsure whether you've become a murderer.");
+                            System.out.println("Have you saved yourself, or just delayed your fate?");
+                            System.out.println("You drive away, hands pale with pressure against the steering wheel.");
+                            System.out.println("ENDING THREE: Prey Instinct.");
+                        } else {
+                            //you fail to defend yourself
+                            System.out.println("Unarmed, caught off guard, you are unable to defend yourself.");
+                            System.out.println("He is bigger, stronger and more determined than you.");
+                            System.out.println("His hands close around your throat. Your windpipe creaks under the pressure.");
+                            System.out.println("John overpowers you, and the last thing you see is his dark, empty eyes.");
+                            System.out.println("ENDING FOUR: The Dark Road.");
+                        }
+                    }
+
+                    if (userSanity <= 0 && hitchFriendship < 20) {
+                        //you totally snap
+                        System.out.println("\nThe world blurs and twists before your eyes.");
+                        System.out.println("Your mind fractures under the strain of uncertainty and fear.");
+                        if (inventory.getOrDefault("Baseball Bat", 0) > 0) {
+                            //you kill him
+                            System.out.println("Panic overwhelming your senses, you grab frantically for the baseball bat.");
+                            System.out.println("This man...this *monster*...he's been toying with you.");
+                            System.out.println("You have to get away. You have to stop this. Now.");
+                            System.out.println("With a hoarse scream, you swing the bat with all your might, connecting with his head.");
+                            System.out.println("Manic giggles bubble out of you as he crumples.");
+                            System.out.println("You make sure his seatbelt is fastened, adjust your rearview mirror, and drive on.");
+                            System.out.println("Your passenger is, at last, blissfully silent.");
+                            System.out.println("ENDING FIVE: Metamorphosis.");
+                            break;
+                        } else {
+                            //you kill...you
+                            System.out.println("Overcome with dread and paranoia, you lose control of yourself.");
+                            System.out.println("The vehicle veers off the road, crashing violently. How long have you been driving like this?");
+                            System.out.println("Everything goes black.");
+                            System.out.println("ENDING SIX: The Final Stop.");
+                        }
+                    }
+
                     if (distanceTraveled >= 2800) {
+                        //you made it!
+                        System.out.println("Looks like your journey has come to an end.");
                         System.out.println("You've reached California! Congratulations! Get ready to start your new life.");
+                        System.out.println("ENDING SEVEN: New Beginnings.");
                         break;
                     }
                 } // end main gameplay loop
@@ -444,5 +561,131 @@ public class HitchhikeFinal {
         } // end while replay
 
         scanner.close();
+    }
+
+    private static void dayEndDisplay(HashMap<String, Integer> inventory) {
+        System.out.print("Inventory: { ");
+        for (String item : inventory.keySet()) {
+            int qty = inventory.get(item);
+            if (qty > 0) {
+                System.out.print(item + ": " + qty + " .");
+            }
+        }
+        System.out.println("}");
+    }
+
+    private static int[] useItems(Scanner scanner, HashMap<String, Integer> inventory, int userThirst, int userHunger, int userSanity, int distanceTraveled) {
+        System.out.println("Use inventory item? (type item name or 'no')");
+        String itemUse = scanner.nextLine().trim().toLowerCase();
+
+        if (itemUse.equalsIgnoreCase("no")) {
+            System.out.println("You chose not to use any items.");
+            return new int[]{userThirst, userHunger, userSanity, distanceTraveled};
+        }
+
+        switch (itemUse) {
+            case "water bottle":
+                if (inventory.getOrDefault("Water Bottle", 0) > 0) {
+                    userThirst += 30;
+                    if (userThirst > 100) userThirst = 100;
+                    inventory.put("Water Bottle", inventory.get("Water Bottle") - 1);
+                    System.out.println("You drink a bottle of water. Thirst increased to " + userThirst + "/100.");
+                } else {
+                    System.out.println("\nYou check your bag but find no water left.");
+                }
+                break;
+            case "snacks":
+                if (inventory.getOrDefault("Snacks", 0) > 0) {
+                    userHunger += 20;
+                    if (userHunger > 100) userHunger = 100;
+                    inventory.put("Snacks", inventory.get("Snacks") - 1);
+                    System.out.println("You eat some snacks. Hunger increased to " + userHunger + "/100.");
+                } else {
+                    System.out.println("\nYou check your bag but find no snacks left.");
+                }
+                break;
+            case "sandwiches":
+                if (inventory.getOrDefault("Sandwiches", 0) > 0) {
+                    userHunger += 35;
+                    if (userHunger > 100) userHunger = 100;
+                    inventory.put("Sandwiches", inventory.get("Sandwiches") - 1);
+                    System.out.println("You eat a sandwich. Hunger increased to " + userHunger + "/100.");
+                } else {
+                    System.out.println("\nYou check your bag but find no sandwiches left.");
+                }
+                break;
+            case "map":
+                System.out.println("You check the map. It shows you're on the right path to California. About " + (2800 - distanceTraveled) + " miles to go.");
+                break;
+            case "first aid kit":
+                if (inventory.getOrDefault("First Aid Kit", 0) > 0) {
+                    userSanity += 20;
+                    if (userSanity > 100) userSanity = 100;
+                    inventory.put("First Aid Kit", inventory.get("First Aid Kit") - 1);
+                    System.out.println("You check the first aid kit. Knowing it's there brings you comfort. Sanity increased to " + userSanity + "/100.");
+                } else {
+                    System.out.println("\nYou check your bag but find no first aid kit left.");
+                }
+                break;
+            default:
+                System.out.println("Invalid item or out of stock.");
+                System.out.println("Try another item? (type item name or 'no')");
+                String secondItemUse = scanner.nextLine().trim().toLowerCase();
+                if (secondItemUse.equalsIgnoreCase("no")) {
+                    System.out.println("You chose not to use any items.");
+                } else {
+                    // reuse the same logic by recursive-like handling (single extra attempt)
+                    switch (secondItemUse) {
+                        case "water bottle":
+                            if (inventory.getOrDefault("Water Bottle", 0) > 0) {
+                                userThirst += 30;
+                                if (userThirst > 100) userThirst = 100;
+                                inventory.put("Water Bottle", inventory.get("Water Bottle") - 1);
+                                System.out.println("You drink a bottle of water. Thirst increased to " + userThirst + "/100.");
+                            } else {
+                                System.out.println("\nYou check your bag but find no water left.");
+                            }
+                            break;
+                        case "snacks":
+                            if (inventory.getOrDefault("Snacks", 0) > 0) {
+                                userHunger += 20;
+                                if (userHunger > 100) userHunger = 100;
+                                inventory.put("Snacks", inventory.get("Snacks") - 1);
+                                System.out.println("You eat some snacks. Hunger increased to " + userHunger + "/100.");
+                            } else {
+                                System.out.println("\nYou check your bag but find no snacks left.");
+                            }
+                            break;
+                        case "sandwiches":
+                            if (inventory.getOrDefault("Sandwiches", 0) > 0) {
+                                userHunger += 35;
+                                if (userHunger > 100) userHunger = 100;
+                                inventory.put("Sandwiches", inventory.get("Sandwiches") - 1);
+                                System.out.println("You eat a sandwich. Hunger increased to " + userHunger + "/100.");
+                            } else {
+                                System.out.println("\nYou check your bag but find no sandwiches left.");
+                            }
+                            break;
+                        case "map":
+                            System.out.println("You check the map. It shows you're on the right path to California. About " + (2800 - distanceTraveled) + " miles to go.");
+                            break;
+                        case "first aid kit":
+                            if (inventory.getOrDefault("First Aid Kit", 0) > 0) {
+                                userSanity += 20;
+                                if (userSanity > 100) userSanity = 100;
+                                inventory.put("First Aid Kit", inventory.get("First Aid Kit") - 1);
+                                System.out.println("You check the first aid kit. Knowing it's there brings you comfort. Sanity increased to " + userSanity + "/100.");
+                            } else {
+                                System.out.println("\nYou check your bag but find no first aid kit left.");
+                            }
+                            break;
+                        default:
+                            System.out.println("Invalid item or out of stock. Try again tomorrow.");
+                    }
+                }
+                break;
+        }
+
+        return new int[]{userThirst, userHunger, userSanity, distanceTraveled};
     }
 }
