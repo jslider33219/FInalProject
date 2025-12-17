@@ -302,10 +302,12 @@ public class HitchhikeFinal {
                                     System.out.println("You can feel his eyes on the back of your neck as you leave the diner.");
                                     hitchSanity -= 12;
                                     System.out.println("As Ohio fades into Indiana, your hunger remains unchanged.");
+                                    userHunger -= 45;
                                 }
                             }
                         } else {
                             System.out.println("\nYou decide to tough it out and not eat right now.");
+                            userHunger -= 45;
                         }
                         distanceTraveled += 270;
 
