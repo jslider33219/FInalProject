@@ -108,7 +108,7 @@ public class HitchhikeFinal {
                         while (true) {
                             String input = scanner.nextLine().trim().toLowerCase();
                             if (input.equals("yes")) {
-                                System.out.println("You decide to strike up a conversation. You share basic things, like your name and reason for traveling.");
+                                System.out.println("\nYou decide to strike up a conversation. You share basic things, like your name and reason for traveling.");
                                 System.out.println("\"My name is John,\" says the passenger. \"I'm actually going west for a job, too.\" \n\"It's hard to leave my life in New York behind, but they say change is healthy.\"");
                                 userSanity -= 5;
                                 userThirst -= 10;
@@ -127,8 +127,27 @@ public class HitchhikeFinal {
 
                         distanceTraveled += 510;
                         System.out.println("A odd feeling creeps up in the back of your mind. You don't question it, almost feels important.");
-                        userHunger -= 10;
-                        System.out.println("\nDay " + dayCount + " Summary -\nHunger: " + userHunger + "/100, Thirst: " + userThirst + "/100, Distance Traveled: " + distanceTraveled + "/2,800 miles.");
+                    userHunger -= 10;
+                    // clamp stats to valid ranges
+                    if (userHunger > 100) {
+                        userHunger = 100;
+                    }
+                    if (userHunger < 0) {
+                        userHunger = 0;
+                    }
+                    if (userThirst > 100) {
+                        userThirst = 100;
+                    }
+                    if (userThirst < 0) {
+                        userThirst = 0;
+                    }
+                    if (userSanity > 100) {
+                        userSanity = 100;
+                    }
+                    if (userSanity < 0) {
+                        userSanity = 0;
+                    }
+                    System.out.println("\nDay " + dayCount + " Summary -\nHunger: " + userHunger + "/100, Thirst: " + userThirst + "/100, Distance Traveled: " + distanceTraveled + "/2,800 miles.");
                    
                         dayEndDisplay(inventory);
                         int[] stats = useItems(scanner, inventory, userThirst, userHunger, userSanity, distanceTraveled);
@@ -439,13 +458,14 @@ public class HitchhikeFinal {
                         System.out.println("\nYou pass into Springfield, Illinois as evening approaches.");
                         System.out.println("Stop for the night, or drive through it? (stop/drive)");
                         String nightResponse = scanner.nextLine().trim().toLowerCase();
+                        boolean wichita;
                         if (nightResponse.equals("stop")) {
                             System.out.println("\nYou find a cheap motel and decide to stop for the night.");
                             System.out.println("John seems, as best you can tell, relieved to get out of the car for a while.");
                             System.out.println("Despite the cheap mattress you get a good night's rest, feeling more prepared for the journey ahead.");
                             hitchSanity += 20;
                             userSanity += 20;
-                            boolean wichita = false;
+                            wichita = false;
                         } else {
                             System.out.println("\nYou decide to push through the night, determined to make as much progress as possible.");
                             System.out.println("The darkness and monotony of the road weigh heavily on you.");
@@ -454,8 +474,26 @@ public class HitchhikeFinal {
                             hitchSanity -= 5;
                             userSanity -= 15;
                             distanceTraveled += 500;
-                            boolean wichita = true;
+                            wichita = true;
                         }
+                        if (userHunger > 100) {
+                        userHunger = 100;
+                    }
+                    if (userHunger < 0) {
+                        userHunger = 0;
+                    }
+                    if (userThirst > 100) {
+                        userThirst = 100;
+                    }
+                    if (userThirst < 0) {
+                        userThirst = 0;
+                    }
+                    if (userSanity > 100) {
+                        userSanity = 100;
+                    }
+                    if (userSanity < 0) {
+                        userSanity = 0;
+                    }
                         System.out.println("\nDay " + dayCount + " Summary -\nHunger: " + userHunger + "/100, Thirst: " + userThirst + "/100, Distance Traveled: " + distanceTraveled + "/2,800 miles.");
                         
                         dayEndDisplay(inventory);
@@ -465,14 +503,171 @@ public class HitchhikeFinal {
                         userSanity = stats2[2];
                         distanceTraveled = stats2[3];
                         dayCount += 1;
+                        if (userHunger <= 20) {
+                            System.out.println("Your empty stomach seems to claw at your insides.");
+                            userSanity -= 14;
+                        }
+                        if (userThirst <= 20) {
+                            System.out.println("Your dry mouth makes it hard to focus.");
+                            userSanity -= 14;
+                        }
 
                         if (wichita) {
                             System.out.println("\nAs you approach Wichita, Kansas, the first light of dawn begins to break over the horizon.");
+                        
+                            System.out.println("The sky is painted in vibrant hues, a stark contrast to the dark haze clouding your mind.");
+                            System.out.println("John begins to stir.");
                         } else {
                             System.out.println("\nYou greet the day in Springfield, Illinois, feeling refreshed.");
                             System.out.println("The sun is shining brightly as you get back on the road towards Kansas.");
+                            System.out.println("John turns to you with a grin.");
+                            hitchFriendship += 10;
+                            hitchSanity += 10;
+                        }
+
+                        if (distanceTraveled >=1100) {
+                            System.out.println("\"We're making good time,\" John says. \"Only about 1,700 miles to go!\"");
+                            System.out.println("\"Y'know, this is the first vacation I've been on in two decades.\"");
+                            System.out.println("Question this? (yes/no)");
+                            String questionResponse = scanner.nextLine().trim().toLowerCase();
+                            if (questionResponse.equals("yes")) {
+System.out.println("\nYou ask why he gave a different reason before.");
+System.out.println("John's mouth clamps up, hands tightening on his knees.");
+                                System.out.println("\"Look, Andy, it's rude to interrogate people like that.\"");
+                                System.out.println("\"You'd better learn to watch that attitude.\"");
+                                hitchFriendship -= 25;
+                                hitchSanity -= 25;
+                                System.out.println("\nHow do you respond? (apologize / stand your ground)");
+                                String respond2Response = scanner.nextLine().trim().toLowerCase();
+                                if (respond2Response.equals("apologize")) {
+                                    System.out.println("\nYou backtrack, explaining you didn't mean to offend him.");
+                                    System.out.println("John's eyes swim with something you can't quite read. \"Alright. Just...be careful, okay?\"");
+                                    hitchFriendship += 8;
+                                    hitchSanity += 10;
+                                } else if (respond2Response.equals("stand your ground")) {
+                                    System.out.println("\nYou insist that honesty is important, especially on a long trip like this.");
+                                    System.out.println("John's dark eyes flash. \"You calling me a liar?\"");
+                                    System.out.println("He slams his fist against the dashboard. \"You think I owe you something? Think you're better than me, kid!?\"");
+                                    hitchFriendship -= 15;
+                                    hitchSanity -= 100;
+                                } else {
+                                    System.out.println("\nInvalid response. The tension between you remains unresolved.");
+                                    hitchFriendship -= 10;
+                                    hitchSanity -= 10;
+                                    userThirst -= 10;
+                                }
+                            
+                            } else {
+                                System.out.println("\nYou decide not to press him further, agreeing that it's nice he can have time for himself.");
+                                System.out.println("John seems appreciative of your response, giving you a small nod.");
+                                hitchFriendship += 15;
+                                hitchSanity += 15;
+                            }
+                        System.out.println("\nIdle chit-chat gradually picks up, filling the air as you drive.");
+                        System.out.println("John suddenly points ahead, at a sign for several stores coming up.");
+                        System.out.println("\"It says there's a sporting goods store,\" he says. \"Mind if we stop? I could use some supplies. I've got a dog back in " + destination + " and I'd really like to stock up on some tennis balls.\"");
+                        System.out.println("Take a break to shop? (yes/no)");
+                        String shopResponse = scanner.nextLine().trim().toLowerCase();
+                        if (shopResponse.equals("yes")) {
+                            System.out.println("\nYou pull into the parking lot of a small sporting goods store.");
+                            System.out.println("You lose John in the aisles almost immediately, unfamiliar with the store's layout.");
+                            System.out.println("A shiny metal baseball bat catches your eye, and a rush of nostalgia overtakes you.");
+                            System.out.println("You pick it up, tossing it from hand to hand as you reminisce on childhood days with your dad.");
+                            inventory.put("Baseball Bat", inventory.getOrDefault("Baseball Bat", 0) + 1);
+                            System.out.println("You allow yourself to be a bit sappy, and bring the bat to checkout.");
+                            System.out.println("John is already stood by the checkout. He holds a small plastic bag.");
+                            hitchFriendship += 20;
+                            hitchSanity += 20;
+                            userSanity += 20;
+                        } else {
+                            System.out.println("\nYou decide to keep moving, not wanting to lose momentum.");
+                            System.out.println("John sighs, muttering, \"No worries, we can stop later if we need to.\"");
+                            System.out.println("You get the feeling that his mood has darkened slightly, words not seeming genuine.");
+                            distanceTraveled += 30;
+                            hitchSanity -= 10;
+                            userThirst -= 10;
+                        }
+
+                        System.out.println("\nThe rest of the day passes in a molasses-slow drip, another state now behind you.");
+                        distanceTraveled += 870;
+                        if (userHunger > 100) {
+                        userHunger = 100;
+                    }
+                    if (userHunger < 0) {
+                        userHunger = 0;
+                    }
+                    if (userThirst > 100) {
+                        userThirst = 100;
+                    }
+                    if (userThirst < 0) {
+                        userThirst = 0;
+                    }
+                    if (userSanity > 100) {
+                        userSanity = 100;
+                    }
+                    if (userSanity < 0) {
+                        userSanity = 0;
+                    }
+                        System.out.println("\nDay " + dayCount + " Summary -\nHunger: " + userHunger + "/100, Thirst: " + userThirst + "/100, Distance Traveled: " + distanceTraveled + "/2,800 miles.");
+                        
+                        if (wichita) {
+                            System.out.println("Moab, Utah greets you as the sun begins to dip.");
+                        }
+                        else {
+                            System.out.println("Colorado Springs greets you as the sun begins to dip.");
                         }
                         
+                            System.out.println("Stop here for the night, or push on? (stop/drive)");
+                        String finalNightResponse = scanner.nextLine().trim().toLowerCase();
+                        if (finalNightResponse.equals("stop")) {System.out.println("\nYou find a cheap motel and decide to stop for the night.");
+                            System.out.println("John seems, as best you can tell, relieved to get out of the car for a while.");
+                            System.out.println("Despite the cheap mattress you get a good night's rest, feeling more prepared for the journey ahead.");
+                            hitchSanity += 20;
+                            userSanity += 20;
+                            System.out.println("The two of you reconvene in the car the next morning, finally nearing the end of your trip.");
+                            if (wichita){
+                                System.out.println("Moab, Utah is blanketed in early morning light as you set off.");
+                            } else {
+                                System.out.println("Colorado Springs is blanketed in early morning light as you set off.");
+                            }
+                        } else {
+                            System.out.println("\nYou decide to push through the night, determined to make as much progress as possible.");
+                            System.out.println("Exhaustion pulls insistently at your mind.");
+                            System.out.println("John garbles a few sentences in his sleep.");
+                            System.out.println("You don't like the words you think you hear.");
+                            userSanity -= 25;
+                            distanceTraveled += 500;
+                            if (wichita){
+                                System.out.println("Eureka, Nevada looms ahead as dawn breaks.");
+                            } else {
+                                System.out.println("Salt Lake City, Utah looms ahead as dawn breaks.");
+                            }
+                        }
+                        System.out.println("\nJohn stretches and rubs his eyes as the first light of dawn filters through the windshield.");
+                        if (destination.equals("Reno")) {
+                        System.out.println("\"Nearly there now, eh? Just a bit further to Los Angeles.\"");
+                        } else {
+                            System.out.println("\"Nearly there now, eh? Just a bit further to Reno.\"");
+                        }
+                        System.out.println("\"Only about " + (2800 - distanceTraveled) + " miles to go!\"");
+
+
+                        dayEndDisplay(inventory);
+                        int[] stats3 = useItems(scanner, inventory, userThirst, userHunger, userSanity, distanceTraveled);
+                        userThirst = stats3[0];
+                        userHunger = stats3[1];
+                        userSanity = stats3[2];
+                        distanceTraveled = stats3[3];
+                        dayCount += 1;
+
+                        if (userHunger <= 20) {
+                            System.out.println("Your empty stomach seems to claw at your insides.");
+                            userSanity -= 14;
+                        }
+                         if (userThirst <= 20) {
+                            System.out.println("Your dry mouth makes it hard to focus.");
+                            userSanity -= 14;
+                        }
 
                     } else {
                         System.out.println("\nYou drive past him. The drive to California is long and lonely.");
@@ -568,7 +763,7 @@ public class HitchhikeFinal {
         for (String item : inventory.keySet()) {
             int qty = inventory.get(item);
             if (qty > 0) {
-                System.out.print(item + ": " + qty + " .");
+                System.out.print(item + ": " + qty + ". ");
             }
         }
         System.out.println("}");
