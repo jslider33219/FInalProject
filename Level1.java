@@ -1,3 +1,7 @@
+//I ended up moving it all to one main file.
+//Great work on this, extremely useful code!
+//Smooth and realistic writing.
+
 public class Level1 extends HitchhikerFinal {
 
     System.out.println("Pennsylvania")
