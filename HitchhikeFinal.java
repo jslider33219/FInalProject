@@ -461,6 +461,7 @@ public class HitchhikeFinal {
                         System.out.println("Stop for the night, or drive through it? (stop/drive)");
                         String nightResponse = scanner.nextLine().trim().toLowerCase();
                         boolean wichita;
+                        boolean nowichita;
                         if (nightResponse.equals("stop")) {
                             System.out.println("\nYou find a cheap motel and decide to stop for the night.");
                             System.out.println("John seems, as best you can tell, relieved to get out of the car for a while.");
@@ -468,6 +469,7 @@ public class HitchhikeFinal {
                             hitchSanity += 20;
                             userSanity += 20;
                             wichita = false;
+                            nowichita = true;
                         } else {
                             System.out.println("\nYou decide to push through the night, determined to make as much progress as possible.");
                             System.out.println("The darkness and monotony of the road weigh heavily on you.");
@@ -477,6 +479,7 @@ public class HitchhikeFinal {
                             userSanity -= 15;
                             distanceTraveled += 500;
                             wichita = true;
+                            nowichita = false;
                         }
                         if (userHunger > 100) {
                         userHunger = 100;
@@ -519,16 +522,15 @@ public class HitchhikeFinal {
                         
                             System.out.println("The sky is painted in vibrant hues, a stark contrast to the dark haze clouding your mind.");
                             System.out.println("John begins to stir.");
-                        } else {
+                        } else if (nowichita) {
                             System.out.println("\nYou greet the day in Springfield, Illinois, feeling refreshed.");
                             System.out.println("The sun is shining brightly as you get back on the road towards Kansas.");
                             System.out.println("John turns to you with a grin.");
-                            hitchFriendship += 10;
-                            hitchSanity += 10;
                         }
-
+                        //why does it skip to the end here
+                        
                         if (distanceTraveled >=1100) {
-                            System.out.println("\"We're making good time,\" John says. \"Only about 1,700 miles to go!\"");
+                            System.out.println("\"We're making good time,\" John says. \"Only about " + (2800-distanceTraveled) + " miles to go!\"");
                             System.out.println("\"Y'know, this is the first vacation I've been on in two decades.\"");
                             System.out.println("Question this? (yes/no)");
                             String questionResponse = scanner.nextLine().trim().toLowerCase();
@@ -610,6 +612,7 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                     if (userSanity < 0) {
                         userSanity = 0;
                     }
+                    dayCount += 1;
                         System.out.println("\nDay " + dayCount + " Summary -\nHunger: " + userHunger + "/100, Thirst: " + userThirst + "/100, Distance Traveled: " + distanceTraveled + "/2,800 miles.");
                         
                         if (wichita) {
@@ -903,7 +906,7 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                 } // end main gameplay loop
 
                 // Replay prompt
-            if (response.equals("no"))  {
+            if (response.equals("no") && distanceTraveled < 500) {
                         System.out.println("\nYou drive past him. The drive to California is long and lonely.");
                         System.out.println("ENDING ONE: Indifference Spared the Cat.");
             }
@@ -984,6 +987,10 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                 } else {
                     System.out.println("\nYou check your bag but find no first aid kit left.");
                 }
+                break;
+            case "baseball bat":
+                System.out.println("You grip the baseball bat tightly, feeling a sense of securityknowing it's there, accompanied by a rush of nostalgia.");
+              userSanity += 10;
                 break;
             default:
                 System.out.println("Invalid item or out of stock.");
