@@ -774,7 +774,6 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                                 userSanity -= 5;
                         }
 
-                        boolean johnHere = true;
                         distanceTraveled += 20000;
 
  if (userHunger > 100) {
@@ -882,14 +881,14 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                         }
                     }
 
-                    if (distanceTraveled >= 2800 && !johnHere) {
+                    if (distanceTraveled >= 2800 && hitchFriendship >= 40) {
                         //you made it!
                         System.out.println("Looks like your journey has come to an end.");
                         System.out.println("You've reached California! Congratulations! Get ready to start your new life.");
                         System.out.println("ENDING SEVEN: New Beginnings.");
                         break;
                     }
-                    if (distanceTraveled >= 2800 && johnHere) {
+                    if (distanceTraveled >= 2800 && hitchFriendship <= 40) {
                         //you made it with john
                         System.out.println("John turns to you, dark eyes shining with gratitude.");
                         System.out.println("\"Thank you, Andy. I couldn't have made it without you. You're a real lifesaver, kid.\"");
@@ -903,7 +902,7 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                 System.out.println("\nPlay again? (yes/no)");
                 String replayResponse = scanner.nextLine().trim().toLowerCase();
                 replay = replayResponse.equals("yes");
-
+            }
             } catch (Exception e) {
                 System.out.println("An error occurred: " + e.getMessage());
                 e.printStackTrace();
