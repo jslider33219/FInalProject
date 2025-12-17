@@ -816,7 +816,7 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                             userSanity -= 14;
                         }
 
-                    } else {
+                    } else if (response.equals("no"))  {
                         System.out.println("\nYou drive past him. The drive to California is long and lonely.");
                         System.out.println("ENDING ONE: Indifference Spared the Cat.");
                         // player chose not to pick him up, end this playthrough
@@ -833,7 +833,7 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                         System.out.println("ENDING TWO: Mercy of the Spider.");
                         break;
                     }
-                    if (hitchSanity <= 0 && hitchFriendship < 40) {
+                    else if (hitchSanity <= 0 && hitchFriendship < 40) {
                         //he totally snaps
                         System.out.println("\nJohn's eyes glaze over, and he suddenly lunges at you.");
                         System.out.println("He's reached some unseen limit, and he can't be controlled anymore.");
@@ -857,7 +857,7 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                         }
                     }
 
-                    if (userSanity <= 0 && hitchFriendship < 20) {
+                    else if (userSanity <= 0 && hitchFriendship < 20) {
                         //you totally snap
                         System.out.println("\nThe world blurs and twists before your eyes.");
                         System.out.println("Your mind fractures under the strain of uncertainty and fear.");
@@ -881,14 +881,14 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                         }
                     }
 
-                    if (distanceTraveled >= 2800 && hitchFriendship >= 40) {
+                    else if (distanceTraveled >= 2800 && hitchFriendship >= 40) {
                         //you made it!
                         System.out.println("Looks like your journey has come to an end.");
                         System.out.println("You've reached California! Congratulations! Get ready to start your new life.");
                         System.out.println("ENDING SEVEN: New Beginnings.");
                         break;
                     }
-                    if (distanceTraveled >= 2800 && hitchFriendship <= 40) {
+                    else if (distanceTraveled >= 2800 && hitchFriendship <= 40) {
                         //you made it with john
                         System.out.println("John turns to you, dark eyes shining with gratitude.");
                         System.out.println("\"Thank you, Andy. I couldn't have made it without you. You're a real lifesaver, kid.\"");
@@ -896,9 +896,15 @@ System.out.println("John's mouth clamps up, hands tightening on his knees.");
                         System.out.println("ENDING EIGHT: Reliable Companion.");
                         break;
                     }
+                    else {System.out.println("\nYou drive past him. The drive to California is long and lonely.");
+                        System.out.println("ENDING ONE: Indifference Spared the Cat.");}
                 } // end main gameplay loop
 
                 // Replay prompt
+            if (response.equals("no"))  {
+                        System.out.println("\nYou drive past him. The drive to California is long and lonely.");
+                        System.out.println("ENDING ONE: Indifference Spared the Cat.");
+            }
                 System.out.println("\nPlay again? (yes/no)");
                 String replayResponse = scanner.nextLine().trim().toLowerCase();
                 replay = replayResponse.equals("yes");
