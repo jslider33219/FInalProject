@@ -529,7 +529,7 @@ public class HitchhikeFinal {
                         }
                         //why does it skip to the end here
                         
-                        if (distanceTraveled >=1100) {
+                        if (distanceTraveled >=100) {
                             System.out.println("\"We're making good time,\" John says. \"Only about " + (2800-distanceTraveled) + " miles to go!\"");
                             System.out.println("\"Y'know, this is the first vacation I've been on in two decades.\"");
                             System.out.println("Question this? (yes/no)");
